@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Login page</title>
+	</head>
+	
+	<style>
+		header{
+			display:flex;
+			align-items:center;
+			justify-content:space-around;
+		}
+		
+		button{
+			height:45px;
+			border:none;
+			background-color:blue;
+			color:white;
+			cursor:pointer;
+			font-size:20px;
+			font-weight:600;
+			border-radius:15px;
+		}
+		
+		
+		input{
+			height:45px;
+			width:300px;
+			font-size:20px;
+			padding-left:12px;
+			border:1px solid black;
+			border-radius:12px;
+		}
+		
+		
+	</style>
+	
+	<body>
+		<header>
+			<img src="https://logos-world.net/wp-content/uploads/2020/11/IRCTC-Symbol.png" width="200"/>
+			<button>Home</button>
+			<button>Enquiry</button>
+			<button>About</button>
+			
+			<a href="login.html">
+				<button>Login</button>
+			</a>
+			
+			<a href="signup.html">
+				<button>Signup</button>
+			</a>
+			
+		</header>
+		
+		<hr/>
+		
+		
+		
+		<center>
+		<h1>User Login page</h1>
+			<form action="validateUser" method="post">
+				
+				<input
+				type="email"
+				name="email"
+				placeholder = "Enter your email"
+				required
+				/>
+				<br/><br/>
+				<input
+				type="password"
+				name="password"
+				placeholder="Create a strong password"
+				required
+				/>
+				
+				<br/><br/>
+				
+				<button>Login</button>
+				
+			</form>
+		</center>
+	</body>
+</html>
+
+
+
+
+
+

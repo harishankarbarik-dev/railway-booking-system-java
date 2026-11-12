@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRCTC Ticket Confirmation</title>
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+.topbar{background:#213d77;color:#fff;padding:14px 30px;display:flex;justify-content:space-between;font-weight:bold}
+.wrap{padding:30px 20px;background:#f2f2f2;min-height:80vh}
+.ticket{max-width:620px;margin:0 auto;background:#fff;border:2px solid #213d77;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.12)}
+.head{background:#213d77;color:#fff;text-align:center;padding:22px}
+.head h2{font-size:22px}.head p{font-size:13px;color:#cbd5e1;margin-top:6px}
+.body{padding:25px}
+.row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px dashed #ccc;font-size:15px}
+.row b{color:#213d77}.row span{text-align:right}
+.status{color:green;font-weight:bold}
+.btns{display:flex;gap:12px;justify-content:center;margin-top:22px}
+.btn{padding:13px 24px;border:none;border-radius:4px;font-weight:bold;font-size:15px;cursor:pointer;text-decoration:none}
+.btn-orange{background:#fb792b;color:#fff}.btn-blue{background:#213d77;color:#fff}
+</style></head><body>
+<div class="topbar"><span>IRCTC • e-Ticket</span><span>PNR: 8562147390</span></div>
+<div class="wrap"><div class="ticket">
+<div class="head"><h2>✅ Ticket Booking Confirmation</h2><p>Train: 12951 Mumbai Rajdhani Express | Chart Prepared</p></div>
+<div class="body">
+<div class="row"><b>Traveller Name:</b><span id="tname" th:text="${name}"></span></div>
+<div class="row"><b>Email:</b><span id="temail" th:text="${email}"></span></div>
+<div class="row"><b>From Station:</b><span id="tsource" th:text="${source}"></span></div>
+<div class="row"><b>To Station:</b><span id="tdestination" th:text="${destination}"></span></div>
+<div class="row"><b>Journey Date:</b><span id="tdate" th:text="${date}"></span></div>
+<div class="row"><b>Class:</b><span>AC 3 Tier (3A)</span></div>
+<div class="row"><b>Seat / Berth:</b><span>B4, 32 (Lower Berth)</span></div>
+<div class="row"><b>Status:</b><span class="status">CONFIRMED ✅</span></div>
+<div class="btns">
+<button class="btn btn-orange" onclick="downloadTicket()">⬇️ Download / Print Ticket</button>
+<a href="book.html" class="btn btn-blue">Book Another Ticket</a>
+</div>
+</div></div></div>
+<script>
+function downloadTicket(){
+let name="Traveller Name: "+document.getElementById("tname").innerText;
+let email="Email: "+document.getElementById("temail").innerText;
+let source="From: "+document.getElementById("tsource").innerText;
+let dest="To: "+document.getElementById("tdestination").innerText;
+let date="Date: "+document.getElementById("tdate").innerText;
+const {jsPDF}=window.jspdf; const doc=new jsPDF();
+doc.setFontSize(18); doc.text("IRCTC Ticket Confirmation",45,35);
+doc.setFontSize(12); doc.text("------------------------------------------------------------",10,45);
+doc.text(name,25,60); doc.text(email,25,72); doc.text(source,25,84); doc.text(dest,25,96); doc.text(date,25,108);
+doc.text("Status: CONFIRMED | Train: 12951 Mumbai Rajdhani",25,125);
+doc.text("Have a happy journey!",65,145);
+doc.text("------------------------------------------------------------",10,155);
+doc.save("IRCTC-ticket.pdf");
+}
+</script>
+</body></html>

@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title>Home Page</title>
+	</head>
+	
+	
+	<style>
+		#form{
+			display:flex;
+			align-items:center;
+			justify-content:center;
+		}
+		
+		
+		form{
+			padding:20px;
+			width: 400px;
+			border:1px solid black;
+		}
+		
+		select,input, option{
+			height:45px;
+			width:240px;
+			font-size:20px;
+			float:right;
+			
+		}
+		
+		button{
+			height:45px;
+			font-size:20px;
+			border:none;
+			background-color:blue;
+			color:white;
+			font-weight:700;
+		}
+		
+		label{
+			font-size: 20px;
+			float: left;
+		}
+	</style>
+	
+	<body>
+		<h1 th:text="${'Welcome: '+name}"></h1>
+		<hr/>
+		
+		<div id="form">
+		<form action="bookTicket" method="post">
+			<label>Source:</label>
+			<select name="source">
+				<option>Hyderabad</option>
+				<option>Mumbai</option>
+				<option>Chennai</option>
+				<option>Delhi</option>
+			</select>
+			
+			<br/><br/><br/>
+			
+			<label>Destination:</label>
+			<select name="destination">
+				<option>Hyderabad</option>
+				<option>Mumbai</option>
+				<option>Chennai</option>
+				<option>Delhi</option>
+			</select>
+			
+			<br/><br/><br/>
+			<label>Date:</label>
+			<input type="date" name="date"/>
+			
+			<br/><br/><br/>
+			
+			<input name ="name" type="hidden" th:value="${name}"/>
+			
+			<input name="email" type="hidden" th:value="${email}"/>
+			
+			<button>Book ticket</button>
+		</form>
+	
+		</div>
+		
+	
+	</body>
+</html>
+
+
+
+
+
+
+
